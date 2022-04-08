@@ -5,7 +5,11 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": []
+    "types": [],
+    "baseUrl": ".",
+    "paths": {
+      "lib2": ["../../dist/libs/lib2"]
+    }
   },
   "exclude": ["src/test-setup.ts", "**/*.spec.ts", "**/*.test.ts"],
   "include": ["**/*.ts"]

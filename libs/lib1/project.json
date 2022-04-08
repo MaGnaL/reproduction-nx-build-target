@@ -5,20 +5,15 @@
   "prefix": "nx-repro",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/lib1"],
+      "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "project": "libs/lib1/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/lib1/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/lib1/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
+        "parallel": false,
+        "color": true,
+        "commands": [
+          "nx run lib1:build-lib",
+          "echo do post-build actions"
+        ]
+      }
     },
     "build-lib": {
       "executor": "@nrwl/angular:package",
