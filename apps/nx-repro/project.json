@@ -1,0 +1,90 @@
+{
+  "projectType": "application",
+  "root": "apps/nx-repro",
+  "sourceRoot": "apps/nx-repro/src",
+  "prefix": "nx-repro",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/nx-repro",
+        "index": "apps/nx-repro/src/index.html",
+        "main": "apps/nx-repro/src/main.ts",
+        "polyfills": "apps/nx-repro/src/polyfills.ts",
+        "tsConfig": "apps/nx-repro/tsconfig.app.json",
+        "assets": ["apps/nx-repro/src/favicon.ico", "apps/nx-repro/src/assets"],
+        "styles": ["apps/nx-repro/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/nx-repro/src/environments/environment.ts",
+              "with": "apps/nx-repro/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "nx-repro:build:production"
+        },
+        "development": {
+          "browserTarget": "nx-repro:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "nx-repro:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/nx-repro/src/**/*.ts",
+          "apps/nx-repro/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/nx-repro"],
+      "options": {
+        "jestConfig": "apps/nx-repro/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

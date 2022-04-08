@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "nx-repro": "apps/nx-repro",
+    "nx-repro-e2e": "apps/nx-repro-e2e"
+  }
+}
