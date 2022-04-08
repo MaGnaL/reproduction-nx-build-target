@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "lib1": "libs/lib1",
+    "lib2": "libs/lib2",
     "nx-repro": "apps/nx-repro",
     "nx-repro-e2e": "apps/nx-repro-e2e"
   }

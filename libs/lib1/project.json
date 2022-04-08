@@ -1,0 +1,39 @@
+{
+  "projectType": "library",
+  "root": "libs/lib1",
+  "sourceRoot": "libs/lib1/src",
+  "prefix": "nx-repro",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/lib1"],
+      "options": {
+        "project": "libs/lib1/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/lib1/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/lib1/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/lib1"],
+      "options": {
+        "jestConfig": "libs/lib1/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/lib1/src/**/*.ts", "libs/lib1/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}
